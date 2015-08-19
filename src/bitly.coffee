@@ -60,9 +60,9 @@ module.exports = (robot) ->
           else
             res.statusCode = resp.status_code
             res.end resp.status_txt
-    catch
+    catch e
       res.statusCode = 400
-      res.end()
+      res.end e.message
 
   robot.respond /(bitly|shorten)\s?(me)?\s?(.+)$/i, (msg) ->
     get msg, "shorten", {
