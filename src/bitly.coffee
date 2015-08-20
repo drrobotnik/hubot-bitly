@@ -30,8 +30,7 @@ BITLY_API = "https://api-ssl.bitly.com/v3/"
 get = (msg, cmd, q, cb) ->
   q.access_token = process.env.HUBOT_BITLY_ACCESS_TOKEN
   msg
-    .http(BITLY_API + cmd)
-    .query q
+    .http(BITLY_API + cmd + qs.stringify(q))
     .get() (err, res, body) ->
       return cb err if err
 
